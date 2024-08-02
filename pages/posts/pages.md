@@ -77,17 +77,7 @@ Some pages require fetching external data for pre-rendering. There are two scena
 **Example**: Your blog page might need to fetch the list of blog posts from a CMS (content management system).
 
 ```js
-// TODO: Need to fetch `posts` (by calling some API endpoint)
-//       before this page can be pre-rendered.
-function Blog({ posts }) {
-  return (
-    <ul>
-      {posts.map((post) => (
-        <li>{post.title}</li>
-      ))}
-    </ul>
-  )
-}
+
 
 ```
 
@@ -140,8 +130,7 @@ function Post({ post }) {
 export async function getStaticPaths() {
   // ...
 }
-
-
+  
 ```
 
 To learn more about how `getStaticPaths` works, check out the [Data Fetching documentation](/docs/basic-features/data-fetching.md#getstaticpaths-static-generation).
