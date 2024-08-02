@@ -117,9 +117,7 @@ So your page **paths** that are pre-rendered depend on external data**.** To han
 ```js
 // This function gets called at build time
 export async function getStaticPaths() {
-  // Call an external API endpoint to get posts
-  const res = await fetch('https://.../posts')
-  const posts = await res.json()
+ 
 
   // Get the paths we want to pre-render based on posts
   const paths = posts.map((post) => ({
