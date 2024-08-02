@@ -13,11 +13,7 @@ In Next.js, a **page** is a [React Component](https://reactjs.org/docs/component
 **Example**: If you create `pages/about.js` that exports a React component like below, it will be accessible at `/about`.
 
 ```js
-function About() {
-  return <div>About</div>
-}
 
-export default About
 ```
 
 ### Pages with Dynamic Routes
@@ -56,11 +52,7 @@ In Next.js, you can statically generate pages **with or without data**. Let's ta
 By default, Next.js pre-renders pages using Static Generation without fetching data. Here's an example:
 
 ```js
-function About() {
-  return <div>About</div>
-}
 
-export default About
 ```
 
 Note that this page does not need to fetch any external data to be pre-rendered. In cases like this, Next.js generates a single HTML file per page during build time.
@@ -166,21 +158,7 @@ To use Server-side Rendering for a page, you need to `export` an `async` functio
 For example, suppose that your page needs to pre-render frequently updated data (fetched from an external API). You can write `getServerSideProps` which fetches this data and passes it to `Page` like below:
 
 ```js
-function Page({ data }) {
-  // Render data...
-}
 
-// This gets called on every request
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`https://.../data`)
-  const data = await res.json()
-
-  // Pass data to the page via props
-  return { props: { data } }
-}
-
-export default Page
 ```
 
 As you can see, `getServerSideProps` is similar to `getStaticProps`, but the difference is that `getServerSideProps` is run on every request instead of on build time.
