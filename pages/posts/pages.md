@@ -97,31 +97,13 @@ Later, you might add the second post with `id: 2`. Then you'd want to pre-render
 So your page **paths** that are pre-rendered depend on external data**.** To handle this, Next.js lets you `export` an `async` function called `getStaticPaths` from a dynamic page (`pages/posts/[id].js` in this case). This function gets called at build time and lets you specify which paths you want to pre-render.
 
 ```js
-// This function gets called at build time
-export async function getStaticPaths() {
- 
 
-  // Get the paths we want to pre-render based on posts
-  const paths = posts.map((post) => ({
-    params: { id: post.id }
-  }))
-
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
-  return { paths, fallback: false }
-}
 ```
 
 Also in `pages/posts/[id].js`, you need to export `getStaticProps` so that you can fetch the data about the post with this `id` and use it to pre-render the page:
 
 ```js
-function Post({ post }) {
-  // Render post...
-}
 
-export async function getStaticPaths() {
-  // ...
-}
   
 ```
 
